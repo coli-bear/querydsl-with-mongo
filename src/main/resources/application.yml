@@ -4,3 +4,8 @@ spring:
       uri: mongodb://root:1234qwer@localhost:27017/?authMechanism=SCRAM-SHA-1&authSource=admin
       database: sample
       authentication-database: admin
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    url: jdbc:h2:mem:testdb

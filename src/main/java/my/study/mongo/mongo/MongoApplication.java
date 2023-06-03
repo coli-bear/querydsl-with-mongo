@@ -20,6 +20,8 @@ import java.util.stream.Collectors;
 
 import static my.study.mongo.mongo.collection.Active.N;
 import static my.study.mongo.mongo.collection.Active.Y;
+import static my.study.mongo.mongo.collection.QFixedDepositDetails.fixedDepositDetails;
+import static my.study.mongo.mongo.entity.QBank.bank;
 
 @SpringBootApplication
 public class MongoApplication {
@@ -41,6 +43,8 @@ public class MongoApplication {
             Condition condition = new BankAccountDetailsConditions().containsAccountId("11c2c");
             List<BankAccountDetails> byCondition = this.dynamicRepository.findByCondition(condition);
             System.out.println("byCondition = " + byCondition);
+            System.out.println("QFixedDepositDetails.fixedDepositDetails = " + fixedDepositDetails);
+            System.out.println("QBank.bank = " + bank);
         };
     }
 //    @Bean

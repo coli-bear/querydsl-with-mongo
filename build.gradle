@@ -20,15 +20,18 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'com.querydsl:querydsl-jpa'
     implementation('com.querydsl:querydsl-mongodb') {
         exclude group: 'org.mongodb', module: 'mongo-java-driver'
     }
     annotationProcessor(
             "org.springframework.boot:spring-boot-configuration-processor",
-            "com.querydsl:querydsl-apt:5.0.0"
+            "com.querydsl:querydsl-apt:5.0.0",
     )
 
+    runtimeOnly 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -37,10 +40,10 @@ dependencies {
 def querydslSrcDir = 'build/generated'
 
 querydsl {
+    jpa = true
+    querydslSourcesDir = querydslSrcDir
     springDataMongo = true
     library = "com.querydsl:querydsl-apt"
-//    jpa = true
-    querydslSourcesDir = querydslSrcDir
 }
 
 compileQuerydsl {
